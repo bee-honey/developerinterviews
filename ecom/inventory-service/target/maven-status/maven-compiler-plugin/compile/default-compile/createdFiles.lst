@@ -1,0 +1,5 @@
+com/nakeer/inventoryservice/service/InventoryService.class
+com/nakeer/inventoryservice/model/Inventory.class
+com/nakeer/inventoryservice/repository/InventoryRepository.class
+com/nakeer/inventoryservice/controller/InventoryController.class
+com/nakeer/inventoryservice/InventoryServiceApplication.class

@@ -1,0 +1,10 @@
+com/nakeer/productservice/repository/ProductRepository.class
+com/nakeer/productservice/model/Product.class
+com/nakeer/productservice/dto/ProductRequest.class
+com/nakeer/productservice/service/ProductService.class
+com/nakeer/productservice/dto/ProductResponse.class
+com/nakeer/productservice/dto/ProductRequest$ProductRequestBuilder.class
+com/nakeer/productservice/dto/ProductResponse$ProductResponseBuilder.class
+com/nakeer/productservice/controller/ProductController.class
+com/nakeer/productservice/LocalProductServiceApplication.class
+com/nakeer/productservice/model/Product$ProductBuilder.class
