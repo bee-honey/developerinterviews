@@ -23,8 +23,8 @@ public class TopicController {
 
     @PostMapping("/categories/{categoryId}/topics")
     @ResponseStatus(value = HttpStatus.CREATED)
-    public Topic addExpesnse(@PathVariable(value = "categoryId") Long categoryId, @Valid @RequestBody Topic Topic) {
-        return topicService.addTopic(categoryId, Topic);
+    public Topic addExpesnse(@PathVariable(value = "categoryId") Long categoryId, @Valid @RequestBody Topic topic) {
+        return topicService.addTopic(categoryId, topic);
     }
 
     @GetMapping("/categories/{categoryId}/topics/{id}")
@@ -38,8 +38,8 @@ public class TopicController {
     }
 
     @PutMapping("/categories/{categoryId}/topics/{id}")
-    public Topic updateTopicById(@PathVariable(value = "categoryId") Long categoryId, @PathVariable("id") Long id, @RequestBody Topic Topic) {
-        return topicService.updateTopicById(categoryId, id, Topic);
+    public Topic updateTopicById(@PathVariable(value = "categoryId") Long categoryId, @PathVariable("id") Long id, @RequestBody Topic topic) {
+        return topicService.updateTopicById(categoryId, id, topic);
     }
 
 }

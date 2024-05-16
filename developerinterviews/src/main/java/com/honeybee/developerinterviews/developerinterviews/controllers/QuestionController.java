@@ -36,4 +36,25 @@ public class QuestionController {
     }
 
     // Additional methods to handle PUT, DELETE etc. can also be implemented here
+    @GetMapping("/categories/{categoryId}/topics/{topicId}/questions/{id}")
+    public Question getQuestionById(@PathVariable(value = "categoryId") Long categoryId,
+                                         @PathVariable(value = "topicId") Long topicId,
+                                         @PathVariable("id") Long id) {
+        return questionService.getQuestionById(categoryId, topicId, id);
+    }
+    @DeleteMapping("/categories/{categoryId}/topics/{topicId}/questions/{id}")
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
+    public void deleteQuestionById(@PathVariable(value = "categoryId") Long categoryId,
+                                   @PathVariable(value = "topicId") Long topicId,
+                                   @RequestParam Long id) {
+        questionService.deleteQuestionById(categoryId, topicId, id);
+    }
+
+    @PutMapping("/categories/{categoryId}/topics/{topicId}/questions/{id}")
+    public Question updateQuestionById(@PathVariable(value = "categoryId") Long categoryId,
+                                       @PathVariable(value = "topicId") Long topicId,
+                                       @PathVariable("id") Long id,
+                                       @RequestBody Question question) {
+        return questionService.updateQuestionById(categoryId, topicId, id, question);
+    }
 }

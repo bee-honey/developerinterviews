@@ -12,9 +12,9 @@ public interface QuestionService {
     Page<Question> findAllQuestionsByTopicId(Long categoryId, Long topicId, Pageable page);
     Question addQuestion(Long categoryId, Long topicId, Question question);
 
-    Question getQuestionById(Long topicId, Long id);
+    Question getQuestionById(Long categoryId, Long topicId, Long id);
 
-    void deleteQuestionById(Long topicId, Long questionId);
+    void deleteQuestionById(Long categoryId, Long topicId, Long questionId);
 
-    Question updateQuestionById(Long topicId, Long id, Question question);
+    Question updateQuestionById(Long categoryId, Long topicId, Long id, Question question);
 }

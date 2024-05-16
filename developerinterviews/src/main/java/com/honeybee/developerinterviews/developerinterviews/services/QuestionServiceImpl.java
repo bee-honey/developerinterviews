@@ -42,17 +42,17 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     @Override
-    public Question getQuestionById(Long topicId, Long id) {
+    public Question getQuestionById(Long categoryId, Long topicId, Long id) {
         return null;
     }
 
     @Override
-    public void deleteQuestionById(Long topicId, Long questionId) {
+    public void deleteQuestionById(Long categoryId, Long topicId, Long questionId) {
 
     }
 
     @Override
-    public Question updateQuestionById(Long topicId, Long id, Question question) {
+    public Question updateQuestionById(Long categoryId, Long topicId, Long id, Question question) {
         return null;
     }
 }
