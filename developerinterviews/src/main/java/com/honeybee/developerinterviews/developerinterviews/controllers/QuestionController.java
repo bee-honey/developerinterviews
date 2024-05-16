@@ -42,7 +42,7 @@ public class QuestionController {
                                          @PathVariable("id") Long id) {
         return questionService.getQuestionById(categoryId, topicId, id);
     }
-    @DeleteMapping("/categories/{categoryId}/topics/{topicId}/questions/{id}")
+    @DeleteMapping("/categories/{categoryId}/topics/{topicId}/questions")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void deleteQuestionById(@PathVariable(value = "categoryId") Long categoryId,
                                    @PathVariable(value = "topicId") Long topicId,

@@ -2,6 +2,8 @@ package com.honeybee.developerinterviews.developerinterviews.services;
 
 import com.honeybee.developerinterviews.developerinterviews.entities.Answer;
 import com.honeybee.developerinterviews.developerinterviews.entities.Question;
+import com.honeybee.developerinterviews.developerinterviews.entities.Topic;
+import com.honeybee.developerinterviews.developerinterviews.exceptions.ResourceNotFoundException;
 import com.honeybee.developerinterviews.developerinterviews.repositories.CategoryRepository;
 import com.honeybee.developerinterviews.developerinterviews.repositories.QuestionRepository;
 import com.honeybee.developerinterviews.developerinterviews.repositories.TopicRepository;
@@ -11,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -43,16 +46,39 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     public Question getQuestionById(Long categoryId, Long topicId, Long id) {
-        return null;
+        Optional<Question> question = questionRepository.findByTopicIdAndId(topicId, id);
+
+        if (question.isPresent() && topicService.getTopicById(categoryId, topicId) != null) {
+            return question.get();
+        }
+
+        throw new ResourceNotFoundException(("Question is not found for the id: " + id + ", within topic id: " + topicId + " and for category id: " + categoryId));
     }
 
     @Override
-    public void deleteQuestionById(Long categoryId, Long topicId, Long questionId) {
+    public void deleteQuestionById(Long categoryId, Long topicId, Long id) {
+        Optional<Question> question = questionRepository.findByTopicIdAndId(topicId, id);
 
+        if (question.isPresent() && topicService.getTopicById(categoryId, topicId) != null) {
+            questionRepository.delete(question.get());
+        }
     }
 
     @Override
     public Question updateQuestionById(Long categoryId, Long topicId, Long id, Question question) {
-        return null;
+        Optional<Question> existingQuestion = questionRepository.findByTopicIdAndId(topicId, id);
+
+        Question oldQuestion = null;
+
+        if (existingQuestion.isPresent()) {
+            oldQuestion = existingQuestion.get();
+        } else {
+            return oldQuestion;
+        }
+
+        oldQuestion.setQuestionText(question.getQuestionText() != null ? question.getQuestionText() : oldQuestion.getQuestionText());
+        oldQuestion.setQuestionType(question.getQuestionType() != null ? question.getQuestionType() : oldQuestion.getQuestionType());
+
+        return questionRepository.save(oldQuestion);
     }
 }
