@@ -23,9 +23,10 @@ public class Category {
 
     @Column(name = "category_name", unique = true, nullable = false)
     @NotNull(message = "value for category name cannot be null")
-    private String category_name;
+    private String categoryName;
 
-    private String category_description;
+    @Column(name = "category_description")
+    private String categoryDescription;
 
     @Column(name="created_at", nullable = false, updatable = false)
     @CreationTimestamp
@@ -35,7 +36,4 @@ public class Category {
     @UpdateTimestamp
     private Timestamp updatedAt;
 
-//    @OneToMany(mappedBy = "category", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-//    @JsonManagedReference
-//    private List<Topic> topics;
 }

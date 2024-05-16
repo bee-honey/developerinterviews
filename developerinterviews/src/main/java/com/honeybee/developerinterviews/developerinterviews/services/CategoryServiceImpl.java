@@ -52,8 +52,8 @@ public class CategoryServiceImpl implements CategoryService {
             return oldCategory;
         }
 
-        oldCategory.setCategory_name(category.getCategory_name() != null ? category.getCategory_name() : oldCategory.getCategory_name());
-        oldCategory.setCategory_description(category.getCategory_description() != null ? category.getCategory_description() : oldCategory.getCategory_description());
+        oldCategory.setCategoryName(category.getCategoryName() != null ? category.getCategoryName() : oldCategory.getCategoryName());
+        oldCategory.setCategoryDescription(category.getCategoryDescription() != null ? category.getCategoryDescription() : oldCategory.getCategoryDescription());
 
         return categoryRepository.save(oldCategory);
     }

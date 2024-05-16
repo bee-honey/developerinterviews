@@ -1,6 +1,5 @@
 package com.honeybee.developerinterviews.developerinterviews.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -25,9 +24,11 @@ public class Topic {
     private Long id;
 
     @NotNull(message = "value for name cannot be null")
-    private String topic_name;
+    @Column(name = "topic_name")
+    private String topicName;
 
-    private String topic_description;
+    @Column(name = "topic_description")
+    private String topicDescription;
 
     @Column(name="created_at", nullable = false, updatable = false)
     @CreationTimestamp
@@ -36,12 +37,6 @@ public class Topic {
     @Column(name="updated_at")
     @UpdateTimestamp
     private Timestamp updatedAt;
-
-//    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-//    @JoinColumn(name = "category_id")
-//    @JsonBackReference
-//    private Category category;
-
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "category_id", nullable = false)
