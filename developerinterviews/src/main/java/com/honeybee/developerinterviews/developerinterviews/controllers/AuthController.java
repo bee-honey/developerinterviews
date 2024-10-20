@@ -4,6 +4,7 @@ import com.honeybee.developerinterviews.developerinterviews.entities.AuthModel;
 import com.honeybee.developerinterviews.developerinterviews.entities.AuthResponse;
 import com.honeybee.developerinterviews.developerinterviews.entities.User;
 import com.honeybee.developerinterviews.developerinterviews.entities.UserModel;
+import com.honeybee.developerinterviews.developerinterviews.security.CustomUserDetails;
 import com.honeybee.developerinterviews.developerinterviews.security.CustomUserDetailsService;
 import com.honeybee.developerinterviews.developerinterviews.services.UserService;
 import com.honeybee.developerinterviews.developerinterviews.utils.JwtTokenUtil;
@@ -41,13 +42,13 @@ public class AuthController {
         authenticate(authModel.getEmail(), authModel.getPassword());
 
         // we need to generate the JWT token
-        final UserDetails userDetails = customUserDetailsService.loadUserByUsername(authModel.getEmail());
+        final CustomUserDetails userDetails = (CustomUserDetails) customUserDetailsService.loadUserByUsername(authModel.getEmail());
         System.out.println("NKK: Authenticated : " + userDetails.getUsername());
 
         final String token = jwtTokenUtil.generateToken(userDetails);
         System.out.println("NKK: Token: " + token);
 
-        return new ResponseEntity<AuthResponse>(new AuthResponse(token), HttpStatus.OK);
+        return new ResponseEntity<AuthResponse>(new AuthResponse(userDetails.getUserId(), token), HttpStatus.OK);
     }
 
     private void authenticate(String email, String password) throws Exception {

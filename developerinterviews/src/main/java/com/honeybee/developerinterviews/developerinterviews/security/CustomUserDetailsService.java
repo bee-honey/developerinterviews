@@ -21,9 +21,10 @@ public class CustomUserDetailsService implements UserDetailsService {
                 new UsernameNotFoundException("User not found for the email/username: " + username));
 
         //ArrayList is the authorities, and we are not dealing with it now
-        return new org.springframework.security.core.userdetails.User(existingUser.getEmail(),
-                existingUser.getPassword(), new ArrayList<>());
+//        return new org.springframework.security.core.userdetails.User(existingUser.getEmail(),
+//                existingUser.getPassword(), new ArrayList<>());
 
+        return new CustomUserDetails(existingUser.getEmail(), existingUser.getPassword(), existingUser.getId(), new ArrayList<>());
 
     }
 }
