@@ -1,10 +1,8 @@
 package com.honeybee.developerinterviews.developerinterviews.controllers;
 
 import com.honeybee.developerinterviews.developerinterviews.entities.Question;
-import com.honeybee.developerinterviews.developerinterviews.entities.Topic;
 import com.honeybee.developerinterviews.developerinterviews.services.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,8 +29,8 @@ public class QuestionController {
             @PathVariable(value = "categoryId") Long categoryId,
             @PathVariable(value = "topicId") Long topicId,
             @RequestBody Question question) {
-        Question savedQuestion = questionService.addQuestion(categoryId, topicId, question);
-        return ResponseEntity.status(HttpStatus.CREATED).body(savedQuestion);
+            Question savedQuestion = questionService.addQuestion(categoryId, topicId, question);
+            return ResponseEntity.status(HttpStatus.CREATED).body(savedQuestion);
     }
 
     // Additional methods to handle PUT, DELETE etc. can also be implemented here
