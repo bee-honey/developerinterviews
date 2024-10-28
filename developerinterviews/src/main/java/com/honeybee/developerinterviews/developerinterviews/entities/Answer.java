@@ -23,7 +23,7 @@ public class Answer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "answer_text")
+    @Column(name = "answer_text", columnDefinition = "TEXT")
     private String answerText;
 
     @Column(name = "is_correct")

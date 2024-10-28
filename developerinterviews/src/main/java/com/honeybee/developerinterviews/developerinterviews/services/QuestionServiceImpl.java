@@ -2,7 +2,9 @@ package com.honeybee.developerinterviews.developerinterviews.services;
 
 import com.honeybee.developerinterviews.developerinterviews.entities.Answer;
 import com.honeybee.developerinterviews.developerinterviews.entities.Question;
+import com.honeybee.developerinterviews.developerinterviews.entities.QuestionType;
 import com.honeybee.developerinterviews.developerinterviews.entities.Topic;
+import com.honeybee.developerinterviews.developerinterviews.exceptions.InvalidFormatException;
 import com.honeybee.developerinterviews.developerinterviews.exceptions.ResourceNotFoundException;
 import com.honeybee.developerinterviews.developerinterviews.repositories.CategoryRepository;
 import com.honeybee.developerinterviews.developerinterviews.repositories.QuestionRepository;
@@ -11,7 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
+import java.util.InvalidPropertiesFormatException;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,7 +37,7 @@ public class QuestionServiceImpl implements QuestionService {
     }
 
     public Question addQuestion(Long categoryId, Long topicId, Question question) {
-        // Assume you set the topic on the question after validation
+
         question.setTopic(topicService.getTopicById(categoryId, topicId));
         if (question.getAnswers() != null) {
             for (Answer answer : question.getAnswers()) {
