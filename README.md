@@ -52,12 +52,93 @@ A backend solution for managing multiple-choice interview questions, built with 
 
 Below are some key endpoints:
 
-	GET /api/questions: Retrieve all questions.
-	POST /api/questions: Add a new question.
-	PUT /api/questions/{id}: Update a question by ID.
-	DELETE /api/questions/{id}: Delete a question by ID.
-	GET /api/questions/category/{categoryId}: Retrieve questions by category.
+# API Endpoints Documentation
 
- ###Contributing
+## User Controller
+
+- **GET** `/profile`
+  - Retrieves the user's profile information.
+
+- **PUT** `/profile`
+  - Updates the user's profile information.
+
+- **GET** `/users`
+  - Retrieves a list of all users.
+
+- **DELETE** `/deactivate`
+  - Deactivates the user's account.
+
+---
+
+## Category Controller
+
+- **GET** `/categories/{id}`
+  - Fetches details of a specific category by its ID.
+
+- **PUT** `/categories/{id}`
+  - Updates the information of a specific category by its ID.
+
+- **GET** `/categories`
+  - Retrieves a list of all categories.
+
+- **POST** `/categories`
+  - Creates a new category.
+
+- **DELETE** `/categories`
+  - Deletes a category.
+
+---
+
+## Question Controller
+
+- **GET** `/categories/{categoryId}/topics/{topicId}/questions/{id}`
+  - Fetches a specific question by category and topic IDs.
+
+- **PUT** `/categories/{categoryId}/topics/{topicId}/questions/{id}`
+  - Updates a specific question by category and topic IDs.
+
+- **GET** `/categories/{categoryId}/topics/{topicId}/questions`
+  - Retrieves a list of questions under a specific category and topic.
+
+- **POST** `/categories/{categoryId}/topics/{topicId}/questions`
+  - Creates a new question under a specific category and topic.
+
+- **DELETE** `/categories/{categoryId}/topics/{topicId}/questions`
+  - Deletes a question under a specific category and topic.
+
+---
+
+## Topic Controller
+
+- **GET** `/categories/{categoryId}/topics/{id}`
+  - Fetches a specific topic by category ID.
+
+- **PUT** `/categories/{categoryId}/topics/{id}`
+  - Updates a specific topic by category ID.
+
+- **GET** `/categories/{categoryId}/topics`
+  - Retrieves a list of topics under a specific category.
+
+- **POST** `/categories/{categoryId}/topics`
+  - Creates a new topic under a specific category.
+
+- **DELETE** `/categories/{categoryId}/topics`
+  - Deletes a topic under a specific category.
+
+---
+
+## Auth Controller
+
+- **POST** `/register`
+  - Registers a new user.
+
+- **POST** `/login`
+  - Authenticates a user and provides access tokens.
+
+---
+
+Each endpoint is organized by controller with clear HTTP method labels, path parameters, and basic descriptions for easy reference.
+
+ ### Contributing
 
 Contributions are welcome! Fork the repository, create a feature branch, and submit a pull request.
