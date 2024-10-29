@@ -48,13 +48,13 @@ A backend solution for managing multiple-choice interview questions, built with 
    mvn spring-boot:run
   
 
- ### API Endpoints
+### API Endpoints
 
 Below are some key endpoints:
 
-# API Endpoints Documentation
+#### API Endpoints Documentation
 
-## User Controller
+#### User Controller
 
 - **GET** `/profile`
   - Retrieves the user's profile information.
@@ -70,7 +70,7 @@ Below are some key endpoints:
 
 ---
 
-## Category Controller
+#### Category Controller
 
 - **GET** `/categories/{id}`
   - Fetches details of a specific category by its ID.
@@ -89,7 +89,7 @@ Below are some key endpoints:
 
 ---
 
-## Question Controller
+#### Question Controller
 
 - **GET** `/categories/{categoryId}/topics/{topicId}/questions/{id}`
   - Fetches a specific question by category and topic IDs.
@@ -108,7 +108,7 @@ Below are some key endpoints:
 
 ---
 
-## Topic Controller
+#### Topic Controller
 
 - **GET** `/categories/{categoryId}/topics/{id}`
   - Fetches a specific topic by category ID.
@@ -127,7 +127,7 @@ Below are some key endpoints:
 
 ---
 
-## Auth Controller
+#### Auth Controller
 
 - **POST** `/register`
   - Registers a new user.
